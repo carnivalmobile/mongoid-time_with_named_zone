@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'time-with-zone'
+  s.name        = 'mongoid-time-with-zone'
   s.version     = '0.1'
   s.date        = '2010-10-16'
   s.summary     =  ''
