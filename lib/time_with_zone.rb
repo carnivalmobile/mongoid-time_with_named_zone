@@ -9,36 +9,37 @@ class TimeWithZone
 
   # Converts an object of this instance into a database friendly value.
   def mongoize
-    { time: time, zone: zone }
+    TimeWithZone.mongoize(self)
   end
 
   class << self
-    # Get the object as it was stored in the database, and instantiate
+    # Get the object as it was stored in the database, and instantiate`
     # this custom class from it.
     def demongoize(object)
       object[:time].in_time_zone(object[:zone]) if object
     end
 
-    # Takes any possible object and converts it to how it would be
-    # stored in the database.
     def mongoize(object)
-      case object
-      when TimeWithZone then object.mongoize
-      when ActiveSupport::TimeWithZone
-        TimeWithZone.new(object.utc, object.time_zone.name).mongoize
-      when Time
-        TimeWithZone.new(object.utc, 'UTC').mongoize
-      else object
-      end
-    end
-
-    # Converts the object that was supplied to a criteria and converts it
-    # into a database friendly form.
-    def evolve(object)
-      case object
-      when TimeWithZone then object.mongoize
-      else object
-      end
+      hash = case object
+             when self
+               {
+                 time: object.time,
+                 zone: ActiveSupport::TimeZone.new(object.zone).name
+               }
+             when ActiveSupport::TimeWithZone
+               {
+                 time: object.utc,
+                 zone: object.time_zone
+               }
+             when Time
+               {
+                 time: object.utc,
+                 zone: 'UTC'
+               }
+             else
+               nil
+             end
+      hash.mongoize
     end
   end
 end
