@@ -22,7 +22,7 @@ gem 'mongoid-time_with_named_zone'
 requiring manually:
 
 ```ruby
-require 'mongoid/time_with_named_zoned'
+require 'mongoid/time_with_named_zone'
 ```
 
 Define your Mongoid models with field types of `Mongoid::TimeWithNamedZone`:
