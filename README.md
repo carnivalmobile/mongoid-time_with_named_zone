@@ -13,7 +13,19 @@ but these don't include the strings representing the name of the timezone. This 
 
 ## Usage
 
-Define your Mongoid models with field types of `TimeWithZone`:
+with Bundler, add this gem to your `Gemfile`:
+
+```ruby
+gem 'mongoid-time_with_named_zone'
+```
+
+requiring manually:
+
+```ruby
+require 'mongoid/time_with_named_zoned'
+```
+
+Define your Mongoid models with field types of `Mongoid::TimeWithNamedZone`:
 
 e.g.:
 
@@ -21,7 +33,7 @@ e.g.:
 
 class BlogPost
 
-  field :published_at, type: TimeWithZone
+  field :published_at, type: Mongoid::TimeWithNamedZone
   field :body,         type: String
 
 end
@@ -37,8 +49,6 @@ post.published_at = Time.now.in_time_zone('Pacific/Auckland')
 ```
 
 ## Testing
-
-_TODO_
 
 Run `rake spec`
 
