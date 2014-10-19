@@ -1,5 +1,5 @@
 module Mongoid
-  module TimeWithNamedZone
+  class TimeWithNamedZone
     VERSION = '0.1.0'.freeze
   end
 end
