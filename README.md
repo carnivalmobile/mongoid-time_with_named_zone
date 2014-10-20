@@ -1,4 +1,4 @@
-# Mongoid Time With Zone
+# Mongoid Time With Named Zone
 
 Timezones can be a developer's worst nightmare and introduce subtle bugs.
 

@@ -1,5 +1,4 @@
 require 'mongoid/time_with_named_zone'
-require 'pry'
 
 describe Mongoid::TimeWithNamedZone do
   describe '#mongoize' do
