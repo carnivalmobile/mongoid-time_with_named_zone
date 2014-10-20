@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Mongoid::TimeWithNamedZone::VERSION
   spec.authors       = ['Carnival Mobile', 'Arthur Evstifeev', 'Artur Khantimirov']
   spec.email         = ['toby@carnivallabs.com']
-  spec.summary       = %q{A Mongoid wrapper for Time objects that retains the timezone name}
-  spec.description   = %q{This gem works transparently with ActiveSupport::TimeWithZone Times. See more: https://github.com/carnivalmobile/time-with-zone}
-  spec.homepage      = 'https://github.com/carnivalmobile/time-with-zone'
+  spec.description   = %q{A Mongoid wrapper for Time objects that retains the timezone name}
+  spec.summary       = %q{This gem works with Mongoid and transparently maps ActiveSupport::TimeWithZone times to serializable times with timezone strings. See more: https://github.com/carnivalmobile/mongoid-time_with_named_zone}
+  spec.homepage      = 'https://github.com/carnivalmobile/mongoid-time_with_named_zone'
   spec.license       = 'Apache 2'
 
   spec.files         = `git ls-files -z`.split("\x0")
