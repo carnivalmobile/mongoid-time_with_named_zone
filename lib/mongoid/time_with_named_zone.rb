@@ -20,8 +20,8 @@ module Mongoid
       # Get the object as it was stored in the database, and instantiate`
       # this custom class from it.
       def demongoize(object)
-        return nil unless object && object[:time] && object[:zone]
-        object[:time].in_time_zone(object[:zone])
+        return nil unless object && object['time'] && object['zone']
+        object['time'].in_time_zone(object['zone'])
       end
 
       def mongoize(object)
