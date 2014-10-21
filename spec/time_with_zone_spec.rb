@@ -32,6 +32,12 @@ describe Mongoid::TimeWithNamedZone do
       expect(demongoized_value).to eq(Time.new(2010, 11, 19, '+13:00'))
     end
 
+    it 'works with symbolized keys' do
+      hash = { time: Time.utc(2010, 11, 19), zone: 'Pacific/Auckland' }
+      demongoized_value = Mongoid::TimeWithNamedZone.demongoize(hash)
+      expect(demongoized_value).to eq(Time.new(2010, 11, 19, '+13:00'))
+    end
+
     it 'returns nil for blank object' do
       expect(Mongoid::TimeWithNamedZone.demongoize(nil)).to eq(nil)
     end
