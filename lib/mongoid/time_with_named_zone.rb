@@ -19,22 +19,13 @@ module Mongoid
       def mongoize(object)
         case object
         when ActiveSupport::TimeWithZone
-          {
-            time: object.utc.mongoize,
-            zone: object.time_zone.name.mongoize
-          }
+          { time: object.utc.mongoize, zone: object.time_zone.name.mongoize }
         when Time || DateTime
-          {
-            time: object.utc.mongoize,
-            zone: 'UTC'.mongoize
-          }
+          { time: object.utc.mongoize, zone: 'UTC'.mongoize }
         when Date
-          {
-            time: object.mongoize,
-            zone: 'UTC'.mongoize
-          }
-        else
-          nil
+          { time: object.mongoize, zone: 'UTC'.mongoize }
+        when Hash
+          { time: object[:time], zone: object[:zone] }
         end
       end
 

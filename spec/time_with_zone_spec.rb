@@ -23,6 +23,11 @@ describe Mongoid::TimeWithNamedZone do
       let(:time) { DateTime.new(2010, 11, 29) }
       it { is_expected.to eq(time: Time.utc(2010, 11, 29), zone: 'UTC') }
     end
+
+    context 'Hash' do
+      let(:time) { { time: Time.utc(2010, 11, 29), zone: 'UTC' } }
+      it { is_expected.to eq(time: Time.utc(2010, 11, 29), zone: 'UTC') }
+    end
   end
 
   describe '.demongoize' do
