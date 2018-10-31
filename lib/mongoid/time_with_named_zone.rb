@@ -10,7 +10,7 @@ module Mongoid
       # Convert the object from its mongo friendly ruby type to this type
       def demongoize(object)
         return nil unless object.is_a? Hash
-        object.symbolize_keys!
+        object = object.to_h.symbolize_keys!
         return nil unless object[:time] && object[:zone]
         object[:time].in_time_zone(object[:zone])
       end
